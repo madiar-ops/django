@@ -47,6 +47,9 @@ def sorted_list(request):
 def card_view(request):
     return render(request, 'card.html')
 
+def login_view(request):
+    return render(request, 'login.html')
+
 
 def fake_api_view(request):
     response = requests.get('https://jsonplaceholder.typicode.com/posts')

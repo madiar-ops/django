@@ -25,4 +25,5 @@ urlpatterns = [
     path('list/', views.sorted_list, name='sorted_list'),
     path('card/', views.card_view, name='card'),
     path('fake-api/', views.fake_api_view, name='fake_api'),
+    path('login/', views.login_view, name='login'),
 ]
