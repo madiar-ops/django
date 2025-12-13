@@ -23,4 +23,5 @@ urlpatterns = [
 
 
     path('',include('bboard.urls')),
+
 ]

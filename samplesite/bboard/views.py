@@ -5,6 +5,7 @@ from bboard.models import Bb, Rubric
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from bboard.forms import BbForm
+import requests
 def index(request):
     # template = loader.get_template('index.html')
     bbs = Bb.objects.all()
@@ -32,3 +33,27 @@ def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     context['rubrics'] = Rubric.objects.all()
     return context
+
+
+
+def home(request):
+    return render(request, 'home.html')
+
+
+def sorted_list(request):
+    return render(request, 'list.html')
+
+
+def card_view(request):
+    return render(request, 'card.html')
+
+
+def fake_api_view(request):
+    response = requests.get('https://jsonplaceholder.typicode.com/posts')
+    posts = []
+    if response.status_code == 200:
+        posts = response.json()[:5]
+    context = {'posts': posts}
+    return render(request, 'fake_api.html', context)
+
+

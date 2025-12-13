@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}dz{% endblock %}</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo">Django Demo</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'sorted_list' %}">Список</a></li>
+                <li><a href="{% url 'card' %}">Карточка</a></li>
+                <li><a href="{% url 'fake_api' %}">Fake API</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 bober. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

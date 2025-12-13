@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.navbar {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    padding: 20px 0 60px;
+}
+
+.footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+}
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+}
+.nested-list {
+    background-color: #fff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.nested-list ol {
+    padding-left: 20px;
+}
+
+.nested-list li {
+    margin: 5px 0;
+}
+.api-item {
+    margin-bottom: 15px;
+}
+.api-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}

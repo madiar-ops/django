@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+
+{% block title %} Fake API{% endblock %}
+
+{% block content %}
+<h2>fake API</h2>
+
+{% if posts %}
+    {% for post in posts %}
+        <div class="card api-item">
+            <div class="card-title api-item-title">
+                (ID: {{ post.id }}) {{ post.title }}
+            </div>
+            <div class="card-text">
+                {{ post.body }}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Не удалось загрузить данные с API.</p>
+{% endif %}
+{% endblock %}

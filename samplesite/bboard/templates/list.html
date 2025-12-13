@@ -1,0 +1,37 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Сортированный список{% endblock %}
+
+{% block content %}
+<h2>Сортированный список с вложенными элементами</h2>
+
+<div class="nested-list">
+    <ol>
+        <li>Фреймворк Django
+            <ol>
+                <li>Модели (Models)</li>
+                <li>Представления (Views)</li>
+                <li>Шаблоны (Templates)</li>
+            </ol>
+        </li>
+        <li>Frontend
+            <ol>
+                <li>HTML
+                    <ol>
+                        <li>Теги</li>
+                        <li>Атрибуты</li>
+                    </ol>
+                </li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ol>
+        </li>
+        <li>База данных
+            <ol>
+                <li>Миграции</li>
+                <li>Запросы (QuerySet)</li>
+            </ol>
+        </li>
+    </ol>
+</div>
+{% endblock %}

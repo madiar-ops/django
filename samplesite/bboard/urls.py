@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.urls import path
 from bboard.views import index, by_rubric, BbCreateView
-
+from . import views
 urlpatterns = [
 
     path('add/', BbCreateView.as_view(), name='add'),
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
-    path('', index, name='index'),
+    path('', views.home, name='home'),
+    path('list/', views.sorted_list, name='sorted_list'),
+    path('card/', views.card_view, name='card'),
+    path('fake-api/', views.fake_api_view, name='fake_api'),
 ]
