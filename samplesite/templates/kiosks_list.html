@@ -1,0 +1,44 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Киоски с мороженым
+{% endblock %}
+
+{% block content %}
+<h2>Киоски с мороженым</h2>
+
+{% for kiosk in kiosks %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
+        <h3>{{ kiosk.name }}</h3>
+        <p><b>Адрес:</b> {{ kiosk.address }}</p>
+        <p>
+            <b>Статус:</b>
+            {% if kiosk.is_open %}
+                Открыт
+            {% else %}
+                Закрыт
+            {% endif %}
+        </p>
+
+        <h4>Мороженое:</h4>
+        <ul>
+            {% for ice in kiosk.ice_creams.all %}
+                <li>
+                    {{ ice.title }} —
+                    {{ ice.flavor }} —
+                    {{ ice.price }}
+                    {% if ice.in_stock %}
+                        (в наличии)
+                    {% else %}
+                        (нет)
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>Мороженого пока нет</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% empty %}
+    <p>Киоски не найдены.</p>
+{% endfor %}
+{% endblock %}

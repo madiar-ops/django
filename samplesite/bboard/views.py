@@ -5,6 +5,8 @@ from bboard.models import Bb, Rubric
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from bboard.forms import BbForm
+from bboard.models import IceCreamKiosk
+
 import requests
 def index(request):
     # template = loader.get_template('index.html')
@@ -59,4 +61,6 @@ def fake_api_view(request):
     context = {'posts': posts}
     return render(request, 'fake_api.html', context)
 
-
+def kiosks_list(request):
+    kiosks = IceCreamKiosk.objects.prefetch_related("ice_creams").all()
+    return render(request, "kiosks_list.html", {"kiosks": kiosks})

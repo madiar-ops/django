@@ -22,6 +22,7 @@ urlpatterns = [
     path('add/', BbCreateView.as_view(), name='add'),
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
     path('', views.home, name='home'),
+    path("kiosks/", views.kiosks_list, name="kiosks_list"),
     path('list/', views.sorted_list, name='sorted_list'),
     path('card/', views.card_view, name='card'),
     path('fake-api/', views.fake_api_view, name='fake_api'),

@@ -1,6 +1,5 @@
 from django.contrib import admin
-from bboard.models import Bb, Rubric
-
+from bboard.models import Bb, Rubric, IceCreamKiosk, IceCream, Parent, Child
 
 class BbAdmin(admin.ModelAdmin):
     list_display = ('title', 'content', 'price', 'published', 'rubric')
@@ -9,3 +8,7 @@ class BbAdmin(admin.ModelAdmin):
 
 admin.site.register(Bb, BbAdmin)
 admin.site.register(Rubric)
+admin.site.register(IceCreamKiosk)
+admin.site.register(IceCream)
+admin.site.register(Parent)
+admin.site.register(Child)
