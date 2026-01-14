@@ -1,4 +1,7 @@
 from django.db import models
+from decimal import Decimal
+from django.db.models import Sum
+from .validators import non_negative
 
 
 class Rubric(models.Model):
@@ -41,6 +44,15 @@ class IceCreamKiosk(models.Model):
     address = models.CharField("Адрес", max_length=255)
     is_open = models.BooleanField("Открыт", default=True)
 
+    def id_and_name(self):
+        return f"{self.id} — {self.name}"
+
+    def total_icecream_price(self):
+        return self.ice_creams.aggregate(total=Sum("price"))["total"] or Decimal("0.00")
+
+    def in_stock_count(self):
+        return self.ice_creams.filter(in_stock=True).count()
+
     def __str__(self):
         return f"{self.name} ({self.address})"
 
@@ -56,7 +68,15 @@ class IceCream(models.Model):
     flavor = models.CharField("Вкус", max_length=120)
     price = models.DecimalField("Цена", max_digits=8, decimal_places=2)
     in_stock = models.BooleanField("В наличии", default=True)
+    price = models.DecimalField(
+        "Цена",
+        max_digits=8,
+        decimal_places=2,
+        validators=[non_negative]
+    )
 
+    def id_and_title(self):
+        return f"{self.id} — {self.title}"
     def __str__(self):
         return f"{self.title} — {self.flavor} ({self.price})"
 
@@ -77,7 +97,7 @@ class Child(models.Model):
         verbose_name="Родитель"
     )
     full_name = models.CharField("ФИО ребёнка", max_length=150)
-    age = models.PositiveIntegerField("Возраст")
+    age = models.PositiveIntegerField("Возраст", validators=[non_negative])
 
     def __str__(self):
         return f"{self.full_name} ({self.age})"
