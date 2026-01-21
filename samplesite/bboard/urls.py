@@ -15,11 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from bboard.views import index, by_rubric, BbCreateView
+from bboard.views import BbListView, BbRubricBbsView, BbCreateView, BbDetailView, BbEditView, BbDeleteView, by_rubric
 from . import views
 urlpatterns = [
-
-    path('add/', BbCreateView.as_view(), name='add'),
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
     path('', views.home, name='home'),
     path("kiosks/", views.kiosks_list, name="kiosks_list"),
@@ -27,4 +25,16 @@ urlpatterns = [
     path('card/', views.card_view, name='card'),
     path('fake-api/', views.fake_api_view, name='fake_api'),
     path('login/', views.login_view, name='login'),
+    path('', BbListView.as_view(), name='index'),
+
+    path('<int:rubric_id>/', BbRubricBbsView.as_view(), name='by_rubric'),
+
+    path('add/', BbCreateView.as_view(), name='add'),
+
+    path('detail/<int:pk>/', BbDetailView.as_view(), name='detail'),
+
+    path('edit/<int:pk>/', BbEditView.as_view(), name='edit'),
+
+    path('delete/<int:pk>/', BbDeleteView.as_view(), name='delete'),
+
 ]
